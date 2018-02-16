@@ -1,0 +1,22 @@
+---
+# tasks file for mmv-ru.vim
+
+- name: vim installed
+  package:
+    name: "{{item}}"
+    state: present
+  with_items:
+  - vim
+  - vim-enhanced
+  tags: [configuration, vim, vim-install]
+
+- name: stat vimrc
+  stat: path={{ ansible_env.HOME }}/.vimrc
+  register: vimrc
+  tags: [configuration, vim, vim-install]
+
+- name: write vimrc
+  copy: src=vimrc dest={{ ansible_env.HOME }}/.vimrc mode=0644
+  when: not vimrc.stat.exists
+  tags: [configuration, vim, vim-install]
+
