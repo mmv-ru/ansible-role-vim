@@ -1,4 +1,4 @@
-" :set mouse=a             " enable mouse in xterm and vimx11
+:set mouse=a             " enable mouse in xterm and vimx11
 :set laststatus=2        " show status line
 :set incsearch           " Incremental search
 :set hlsearch            " Highlight search
@@ -22,4 +22,3 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
-
